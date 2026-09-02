@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arova Bathroom Demo</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            background: #ffffff;
+            color: #222;
+
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* =========================================
+       TOP DIV
+       ========================================= */
+
+        .top-div {
+            height: 4vh;
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            border-bottom: 1px solid #ddd;
+            background: #BF5845FF;
+        }
+
+        .top-column {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            
+        }
+
+        .top-column:last-child {
+            border-right: none;
+        }
+
+
+        /* =========================================
+       SOCIAL ICONS
+       ========================================= */
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            gap: 18px;
+            padding-left: 120px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 15px;
+            text-decoration: none;
+
+            transition: opacity 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            opacity: 0.7;
+        }
+
+
+        /* =========================================
+       MIDDLE TOP COLUMN
+       ========================================= */
+
+        .top-middle {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .top-middle a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .top-middle a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================
+       RIGHT TOP COLUMN
+       ========================================= */
+
+        .top-right-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 20px;
+
+            font-size: 13px;
+        }
+
+        .top-right-links a {
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .top-right-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================
+       SECOND TOP DIV
+       ========================================= */
+
+        .second-top-div {
+            height: 12vh;
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            
+        }
+
+        .second-column {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .second-column:last-child {
+            border-right: none;
+        }
+
+        .search-column {
+            gap: 10px;
+            font-size: 13px;
+            color: #222;
+        }
+
+        .search-column i {
+            font-size: 14px;
+        }
+
+        .arova-logo {
+            width: 40%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .account-cart {
+            gap: 25px;
+            font-size: 13px;
+        }
+
+        .account-cart a {
+            color: #222;
+            text-decoration: none;
+        }
+
+        .account-cart a:hover {
+            text-decoration: underline;
+        }
+
+        .account-cart i {
+            margin-left: 6px;
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+       THIRD TOP DIV
+       ========================================= */
+
+        .third-top-div {
+            height: 8vh;
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            
+        }
+
+        /* =========================================
+        MAIN NAVIGATION
+        ========================================= */
+
+        .main-nav {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 32px;
+
+            font-size: 14px;
+        }
+
+        .main-nav a {
+            color: #222;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .main-nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================
+       MAIN CONTENT
+       ========================================= */
+
+        .main-content {
+            width: 100%;
+            flex: 1;
+            position: relative;
+
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        .slideshow {
+            position: relative;
+            width: 100%;
+            flex: 1;
+            overflow: hidden;
+
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-hadley {
+            left: 0;
+        }
+
+        .slide-nola {
+            left: 0;
+            opacity: 0;
+        }
+
+        /* =========================================
+       TEMPORARY DEVELOPMENT LABELS
+       ========================================= */
+
+        .demo-notice {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            width: 60%;
+
+            background: orange;
+            color: blue;
+
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+
+            padding: 8px 0;
+
+            transform: translate(-50%, -50%) rotate(-45deg);
+
+            z-index: 10;
+        }
+
+        .label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        #R3F-app {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            overflow: visible;
+
+            
+        }
+
+        #R3F-app canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+
+            
+        }
+
+        @media (max-width: 768px) {
+
+            .top-div .social-icons,
+            .top-div .top-right-links {
+                display: none;
+            }
+
+            .top-div {
+                grid-template-columns: 1fr;
+            }
+
+            .second-top-div {
+                height: 60px;
+            }
+
+            .third-top-div {
+                display: none;
+            }
+
+            .search-column span {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                left: 20px;
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+
+
+    <!-- =========================================
+       TOP DIV
+       ========================================= -->
+
+    <div class="top-div">
+
+
+        <!-- LEFT COLUMN — SOCIAL ICONS -->
+
+        <div class="top-column social-icons">
+
+            <a href="#" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="#" aria-label="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a href="#" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="#" aria-label="Pinterest">
+                <i class="fa-brands fa-pinterest-p"></i>
+            </a>
+
+        </div>
+
+
+        <!-- MIDDLE COLUMN -->
+
+        <div class="top-column top-middle">
+
+            Phone:
+            <a href="tel:(03)84591060">
+                (03) 8459 1060
+            </a>
+
+            &nbsp;&nbsp;
+
+            Visit us at:
+
+            <a href="https://www.google.com/maps?sca_esv=557322196&output=search&q=arova+mulgrave&source=lnms&entry=mc&sa=X&sqi=2&ved=2ahUKEwjP0OennuCAAxXBSmwGHdMMCeMQ0pQJegQIDhAB"
+                target="_blank">
+                <strong>Mulgrave</strong>
+            </a>
+
+            |
+
+            <a href="https://www.google.com/maps/place/Arova+Thomastown/@-37.6837933,145.0152588,17z/data=!3m1!4b1!4m6!3m5!1s0x6ad6503f357cedb5:0xefdd3fce2a9910bd!8m2!3d-37.6837976!4d145.0178337!16s%2Fg%2F11btymbwg8?entry=ttu"
+                target="_blank">
+                <strong>Thomastown</strong>
+            </a>
+
+            |
+
+            <a href="https://www.google.com/maps/place/Arova+Sunshine/@-37.81103,144.6820043,12z/data=!4m10!1m2!2m1!1sarova+sunshine!3m6!1s0x6ad661dfeddd2a1f:0x94fccf66e1d8ccf3!8m2!3d-37.81103!4d145.82208!15sCg5hcm92YSBzdW5zaGluZVoQIg5hcm92YSBzdW5zaGluZZIBFWJhdGhyb29tX3N1cHBseV9zdG9yZZoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VSNE9XTnhMWGwzUlJBQuABAA!16s%2Fg%2F11jp1hltkr?entry=ttu"
+                target="_blank">
+                <strong>Sunshine</strong>
+            </a>
+
+        </div>
+
+
+        <!-- RIGHT COLUMN — TEXT LINKS -->
+
+        <div class="top-column top-right-links">
+
+            <a href="tel:(03)84591060">
+                Call Us (03) 8459 1060
+            </a>
+
+            <a href="https://www.arova.com.au/pages/find-our-store" target="_blank">
+                Find A Store
+            </a>
+
+            <a href="https://www.arova.com.au/pages/about-us" target="_blank">
+                About Us
+            </a>
+
+            <a href="https://www.arova.com.au/pages/career-opportunities-1" target="_blank">
+                Work with Us
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+       SECOND TOP DIV
+       ========================================= -->
+
+    <!-- =========================================
+       SECOND TOP DIV
+       ========================================= -->
+
+    <div class="second-top-div">
+
+
+
+        <!-- LEFT — SEARCH -->
+
+        <div class="second-column search-column">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+
+            <i class="fa-solid fa-bars hamburger"></i>
+
+
+        </div>
+
+
+        <!-- CENTRE — AROVA LOGO -->
+
+        <div class="second-column">
+
+            <!-- <img class="arova-logo" src="images/arova-logo-2.jpg" alt="arova kitchens and bathrooms" width="200"
+                height="60" loading="eager"> -->
+            <div id="R3F-app"></div>
+        </div>
+
+
+        <!-- RIGHT — R3F APP -->
+
+        <div class="second-column">
+
+
+            <div class="second-column account-cart">
+
+                <a href="#">Account</a>
+
+                <a href="#">
+                    Cart
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!-- =========================================
+       THIRD TOP DIV — MAIN NAVIGATION
+       ========================================= -->
+
+    <div class="third-top-div">
+
+        <nav class="main-nav">
+
+            <a href="https://www.arova.com.au/collections/bathroom-vanity">
+                <strong>Vanities</strong>
+            </a>
+
+            <a href="https://www.arova.com.au/collections/baths">
+                <strong>Bathtubs</strong>
+            </a>
+
+            <a href="https://www.arova.com.au/collections/mirrors-cabinets">
+                <strong>Mirrors &amp; Cabinets</strong>
+            </a>
+
+            <a href="https://www.arova.com.au/collections/sinks">
+                <strong>Sinks</strong>
+            </a>
+
+            <a href="https://www.arova.com.au/collections/toilets">
+                <strong>Toilets</strong>
+            </a>
+
+            <a href="https://www.arova.com.au/collections/bathroom-basins">
+                <strong>Basins</strong>
+            </a>
+
+            <a href="https://www.arova.com.au/collections/tapware">
+                <strong>Tapware</strong>
+            </a>
+
+            <a href="https://www.arova.com.au/collections/showers">
+                <strong>Showers</strong>
+            </a>
+
+            <a href="https://www.arova.com.au/collections/bathroom-accessories">
+                <strong>Accessories</strong>
+            </a>
+
+            <a href="https://www.arova.com.au/pages/clearance-sale">
+                <strong>SALE</strong>
+            </a>
+
+        </nav>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- =========================================
+       MAIN CONTENT
+       ========================================= -->
+
+    <main class="main-content">
+
+
+
+        <div class="demo-notice">
+            Demo site only - non-functioning links
+        </div>
+
+        <div class="slideshow">
+            <img class="slide slide-hadley" src="images/arova-hadley-1.jpg" alt="Arova Hadley bathroom">
+
+            <img class="slide slide-nola" src="images/arova-nola-1.jpg" alt="Arova Nola bathroom">
+        </div>
+
+
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+
+    <script>
+
+        const tl = gsap.timeline({
+            repeat: -1
+        });
+
+        tl
+            // Show Hadley
+            .to(".slide-hadley", {
+                opacity: 1,
+                duration: 0
+            })
+
+            // Hold Hadley
+            .to({}, {
+                duration: 3
+            })
+
+            // Cross-fade to Nola
+            .to(".slide-hadley", {
+                opacity: 0,
+                duration: 1.5
+            })
+            .to(".slide-nola", {
+                opacity: 1,
+                duration: 1.5
+            }, "<")
+
+            // Hold Nola
+            .to({}, {
+                duration: 3
+            })
+
+            // Cross-fade back to Hadley
+            .to(".slide-nola", {
+                opacity: 0,
+                duration: 1.5
+            })
+            .to(".slide-hadley", {
+                opacity: 1,
+                duration: 1.5
+            }, "<");
+    </script>
+
+    <script type="module" src="./dist/assets/R3F-app.js"></script>
+
+</body>
+
+</html>
