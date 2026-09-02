@@ -6,8 +6,7 @@ import { useFrame } from "@react-three/fiber";
 
 export default function Model() {
 
-  const { scene } =
-    useGLTF("/models/arova-1.glb");
+  const { scene } = useGLTF(`${import.meta.env.BASE_URL}models/arova-1.glb`);
 
   const progressRef =
     useRef(0);
@@ -393,7 +392,5 @@ else {
 }
 
 
-useGLTF.preload(
-  "/models/arova-1.glb"
-);
+useGLTF.preload(`${import.meta.env.BASE_URL}models/arova-1.glb`);
 
