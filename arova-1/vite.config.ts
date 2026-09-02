@@ -5,6 +5,8 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
 
+  base: "./",
+
   build: {
     outDir: "../dist",
     emptyOutDir: true,
